@@ -21,7 +21,7 @@ export EDITOR='vim'
 
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven
-export PATH=/bin:$PATH
+export PATH=/opt/maven/bin:$PATH
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
