@@ -3,6 +3,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
+chmod go-r ~/.kube/config
+
 plugins=(
     git
     zsh-nvm zsh-autosuggestions
@@ -27,5 +29,3 @@ alias kns='kubens'
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 eval `dircolors ~/.dircolors`
 export DOCKER_HOST=tcp://localhost:2375
-
-chmod go-r ~/.kube/config
