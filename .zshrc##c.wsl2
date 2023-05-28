@@ -27,3 +27,5 @@ alias kns='kubens'
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 eval `dircolors ~/.dircolors`
 export DOCKER_HOST=tcp://localhost:2375
+
+chmod go-r ~/.kube/config
