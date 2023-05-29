@@ -45,6 +45,10 @@ if ! command -v kubectx >/dev/null 2>&1; then
     sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
     sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
     sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
+    mkdir -p ~/.completions
+    ln -s /opt/kubectx/completion/_kubectx.zsh ~/.completions/_kubectx.zsh
+    ln -s /opt/kubectx/completion/_kubens.zsh ~/.completions/_kubens.zsh
 fi
 
 if ! command -v docker >/dev/null 2>&1; then
