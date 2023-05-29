@@ -12,8 +12,6 @@ sudo apt install zsh git zip unzip fzf -y
 
 sudo apt-get install --reinstall ca-certificates
 
-eval $HOME/.zshrc
-
 if ! command -v brew >/dev/null 2>&1; then
     NONINTERACTIVE=1
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -32,12 +30,6 @@ fi
 
 if ! command -v sdk >/dev/null 2>&1; then
     curl -s "https://get.sdkman.io" | bash
-    eval "$HOME/.sdkman/bin/sdkman-init.sh"
-    sdk install java 20-amzn
-fi
-
-if ! command -v node >/dev/null 2>&1; then
-    nvm install 18.16.0
 fi
 
 if ! command -v kubectl >/dev/null 2>&1; then
