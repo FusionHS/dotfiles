@@ -1,0 +1,89 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  creationTimestamp: "2023-05-28T19:16:20Z"
+  name: schemahero
+spec:
+  caveats: |
+    SchemaHero requires an in-cluster operator. To install the operator run:
+
+      $ kubectl schemahero install
+  description: |
+    SchemaHero is a database schema migration tool that converts a schema
+    definition into migration scripts to be applied to a database engine
+    (with current support for Postgres, Mysql, rqlite and CockroachDB).
+
+    SchemaHero allows developers to define a database table schema as a
+    declarative Kubernetes object and then apply the definition to the
+    cluster. The SchemaHero operator will then query the current database
+    schema and generate (and optionally apply) the necessary SQL
+    statements to update the database to the desired schema.
+
+    To learn more, try the tutorial at https://schemahero.io/tutorial/
+  homepage: https://schemahero.io
+  platforms:
+  - bin: kubectl-schemahero
+    files:
+    - from: kubectl-schemahero
+      to: .
+    - from: LICENSE
+      to: .
+    selector:
+      matchLabels:
+        arch: amd64
+        os: linux
+    sha256: 29a7c61384fc548c928a7af52f12ed291e134e40d11929711fd7ee22901ac898
+    uri: https://github.com/schemahero/schemahero/releases/download/v0.14.0/kubectl-schemahero_linux_amd64.tar.gz
+  - bin: kubectl-schemahero
+    files:
+    - from: kubectl-schemahero
+      to: .
+    - from: LICENSE
+      to: .
+    selector:
+      matchLabels:
+        arch: arm64
+        os: linux
+    sha256: 2015e9cb8f6f16a28b2a53118e78a4c14d911baf329097f49cfb41046f3bf860
+    uri: https://github.com/schemahero/schemahero/releases/download/v0.14.0/kubectl-schemahero_linux_arm64.tar.gz
+  - bin: kubectl-schemahero
+    files:
+    - from: kubectl-schemahero
+      to: .
+    - from: LICENSE
+      to: .
+    selector:
+      matchLabels:
+        arch: amd64
+        os: darwin
+    sha256: a3eaa00220e5c2de6fa672bffde6c1604113edd2f50663c436a7362b21ab51ea
+    uri: https://github.com/schemahero/schemahero/releases/download/v0.14.0/kubectl-schemahero_darwin_amd64.tar.gz
+  - bin: kubectl-schemahero
+    files:
+    - from: kubectl-schemahero
+      to: .
+    - from: LICENSE
+      to: .
+    selector:
+      matchLabels:
+        arch: arm64
+        os: darwin
+    sha256: 97876d21da201897ee91629b2b7ecdc893b252885f16be20efe7c507844adaf0
+    uri: https://github.com/schemahero/schemahero/releases/download/v0.14.0/kubectl-schemahero_darwin_arm64.tar.gz
+  - bin: kubectl-schemahero.exe
+    files:
+    - from: kubectl-schemahero.exe
+      to: .
+    - from: LICENSE
+      to: .
+    selector:
+      matchLabels:
+        arch: amd64
+        os: windows
+    sha256: 4879b2d3d63023ab8795a1bc26716fb22fd8aa3537007918cae73afb7883b623
+    uri: https://github.com/schemahero/schemahero/releases/download/v0.14.0/kubectl-schemahero_windows_amd64.tar.gz
+  shortDescription: Declarative database schema migrations via YAML
+  version: v0.14.0
+status:
+  source:
+    name: default
