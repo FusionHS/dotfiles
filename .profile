@@ -1,12 +1,26 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+alias c="clear"
+alias vim='nvim'
+alias vi='nvim'
+alias ls='ls --color=auto'
+alias k='kubectl'
+alias h='helm'
+alias kctx='kubectx'
+alias kns='kubens'
 
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+
+export EDITOR="nvim"
+export SHELL="zsh"
+
+export GOPATH="$HOME/.go"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="$PATH:/opt/android-sdk/platform-tools"
+export PATH="$PATH:/opt/android-sdk/build-tools"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/sbin"
+export KUBECONFIG="$HOME/.kube/config"
+
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
@@ -25,3 +39,4 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
