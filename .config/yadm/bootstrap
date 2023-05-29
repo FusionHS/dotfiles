@@ -83,3 +83,8 @@ if [ ! -f "$HOME/.kube/config" ]; then
     chmod go-r ~/.kube/config
 fi
 
+echo "================================================================"
+echo "First open a new shell then you can run the following:"
+echo "To install Java run 'sdk install java 20-amzn'"
+echo "To install NodeJs run 'nvm install 18.16.0'"
+
