@@ -21,9 +21,10 @@ k9s:
   clusters:
     docker-desktop:
       namespace:
-        active: all
+        active: ingress-nginx
         lockFavorites: false
         favorites:
+        - ingress-nginx
         - all
         - pg-demo
         - default
