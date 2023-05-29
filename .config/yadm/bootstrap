@@ -4,19 +4,18 @@ system_type=$(uname -s)
 distro_type=$(uname -r)
 windows_user=$(/mnt/c/Windows/System32/cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
 
-[[ windows_user == *WSL2 ]] && yadm config local.class wsl2
-[[ windows_user == *Microsoft ]] && yadm config local.class wsl1
+[[ $distro_type == *WSL2 ]] && yadm config local.class wsl2
+[[ $distro_type == *Microsoft ]] && yadm config local.class wsl1
 
 sudo apt update && \
 sudo apt install zsh git zip unzip fzf -y
 
 sudo apt-get install --reinstall ca-certificates
 
-echo $HOME
-
-source $HOME/.zshrc
+eval $HOME/.zshrc
 
 if ! command -v brew >/dev/null 2>&1; then
+    NONINTERACTIVE=1
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -33,7 +32,7 @@ fi
 
 if ! command -v sdk >/dev/null 2>&1; then
     curl -s "https://get.sdkman.io" | bash
-    source "$HOME/.sdkman/bin/sdkman-init.sh"
+    eval "$HOME/.sdkman/bin/sdkman-init.sh"
     sdk install java 20-amzn
 fi
 
