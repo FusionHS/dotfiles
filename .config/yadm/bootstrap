@@ -1,12 +1,15 @@
 #!/bin/sh
 
-
 system_type=$(uname -s)
+distro_type=$(uname -r)
+windows_user=$(/mnt/c/Windows/System32/cmd.exe /c 'echo %USERNAME%' | sed -e 's/\r//g')
 
 sudo apt update && \
 sudo apt install zsh git zip unzip fzf -y
 
 sudo apt-get install --reinstall ca-certificates
+
+source $HOME/.zshrc
 
 if ! command -v brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -25,6 +28,7 @@ fi
 
 if ! command -v sdk >/dev/null 2>&1; then
     curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
     sdk install java 20-amzn
 fi
 
@@ -51,6 +55,10 @@ if ! command -v docker >/dev/null 2>&1; then
     curl -fsSL https://get.docker.com | sh
 fi
 
+if  $(docker version) =~ "The command 'docker' could not be found in this WSL 1 distro."; then
+    curl -fsSL https://get.docker.com | sh
+fi
+
 if ! command -v gcloud >/dev/null 2>&1; then
     sudo apt-get install apt-transport-https ca-certificates gnupg -y
     echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -63,8 +71,13 @@ if [ -f "$HOME/.Brewfile" ]; then
     brew bundle --global
 fi
 
-
 if [ ! -f "$HOME/.dircolors" ]; then
     curl https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark --output ~/.dircolors
+fi
+
+if [ ! -f "$HOME/.kube/config" ]; then
+    mkdir $HOME/.kube
+    cp /mnt/c/Users/$windows_user/.kube/config $HOME/.kube/config
+    chmod go-r ~/.kube/config
 fi
 
