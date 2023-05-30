@@ -1,3 +1,7 @@
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
+
 # Set the GPG_TTY to be the same as the TTY, either via the env var
 # or via the tty command.
 if [ -n "$TTY" ]; then
@@ -37,6 +41,9 @@ zi light ohmyzsh/ohmyzsh
 zi ice depth=1; zi light romkatv/powerlevel10k
 
 zi wait lucid for \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-autosuggestions \
+  OMZP::command-not-found \
   OMZP::git \
   OMZP::sudo \
   OMZP::nvm \
@@ -45,10 +52,7 @@ zi wait lucid for \
   OMZP::mvn \
   OMZP::helm \
   OMZP::vscode \
-  OMZP::command-not-found \
   as"completion"  OMZP::docker/_docker \
-  zsh-users/zsh-syntax-highlighting \
-  zsh-users/zsh-autosuggestions \
   lukechilds/zsh-nvm \
 
 zi for \
