@@ -21,7 +21,7 @@ fi
 
 #export PATH="/usr/local/bin:/usr/bin"
 
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # Download Zinit, if it's not there yet
@@ -32,22 +32,31 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit light ohmyzsh/ohmyzsh
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::nvm
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
-zinit snippet OMZP::mvn
-zinit snippet OMZP::helm
-zinit snippet OMZP::vscode
-zinit snippet OMZP::command-not-found
 
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light lukechilds/zsh-nvm
+zi light ohmyzsh/ohmyzsh
+zi ice depth=1; zi light romkatv/powerlevel10k
+
+zi wait lucid for \
+  OMZP::git \
+  OMZP::sudo \
+  OMZP::nvm \
+  OMZP::kubectl \
+  OMZP::kubectx \
+  OMZP::mvn \
+  OMZP::helm \
+  OMZP::vscode \
+  OMZP::command-not-found \
+  as"completion"  OMZP::docker/_docker \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-autosuggestions \
+  lukechilds/zsh-nvm \
+
+zi for \
+    atload"zicompinit; zicdreplay" \
+    blockf \
+    lucid \
+    wait \
+  zsh-users/zsh-completions
 
 # export LANG=en_US.UTF-8
 # export LC_ALL=en_US.UTF-8
@@ -58,12 +67,6 @@ setopt auto_cd
 
 alias sudo='sudo '
 export LD_LIBRARY_PATH=/usr/local/lib
-
-# Completions
-
-# source <(doctl completion zsh)
-
-source <(kubectl completion zsh)
 
 # P10k customizations
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -79,7 +82,7 @@ export PATH=/opt/maven/bin:$PATH
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-export DOCKER_HOST=tcp://localhost:2375
+[[ $(yadm config local.class) =~ wsl1 ]] && export DOCKER_HOST=tcp://localhost:2375
 
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -89,7 +92,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
-
 
 # Capslock command
 alias capslock="sudo killall -USR1 caps2esc"
