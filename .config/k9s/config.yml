@@ -16,8 +16,8 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: docker-desktop
-  currentCluster: docker-desktop
+  currentContext: gke_fusionhs-web_us-east1-c_fhs-diamond
+  currentCluster: gke_fusionhs-web_us-east1-c_fhs-diamond
   clusters:
     docker-desktop:
       namespace:
@@ -27,6 +27,26 @@ k9s:
         - ingress-nginx
         - all
         - pg-demo
+        - default
+      view:
+        active: po
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    gke_fusionhs-web_us-east1-c_fhs-diamond:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
         - default
       view:
         active: po
