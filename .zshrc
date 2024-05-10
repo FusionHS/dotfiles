@@ -90,6 +90,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+unsetopt beep
+
 eval `dircolors ~/.dircolors`
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
