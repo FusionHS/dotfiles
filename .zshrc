@@ -52,7 +52,7 @@ zi wait lucid for \
   OMZP::mvn \
   OMZP::helm \
   OMZP::vscode \
-  as"completion"  OMZP::docker/_docker \
+  as"completion"  OMZP::docker \
   lukechilds/zsh-nvm \
 
 zi for \

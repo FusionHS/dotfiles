@@ -85,10 +85,10 @@ if [ ! -f "$HOME/.kube/config" ]; then
 fi
 
 mkdir -p /mnt/c/git
-ln -sf /mnt/c/git ~/git
+ln -sf /mnt/c/git ~/git-win
 
 echo "================================================================"
 echo "First open a new shell then you can run the following:"
-echo "To install Java run 'sdk install java 20-amzn'"
-echo "To install NodeJs run 'nvm install 18.16.0'"
+echo "To install Java run 'sdk install java 22-amzn'"
+echo "To install NodeJs run 'nvm install 20'"
 
