@@ -97,6 +97,7 @@ eval `dircolors ~/.dircolors`
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(thefuck --alias)"
 
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
