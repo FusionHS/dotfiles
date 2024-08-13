@@ -1,11 +1,15 @@
 alias c="clear"
 alias vim='nvim'
 alias vi='nvim'
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 alias k='kubectl'
 alias h='helm'
 alias kctx='kubectx'
 alias kns='kubens'
+alias ls='eza --long --all --no-permissions --no-filesize --no-user --no-time --git'
+alias cat='batcat --paging=never --theme=DarkNeon --style=plain'
+alias fzfp="fzf --preview 'batcat --style=numbers --color=always {}'"
+
 
 [ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 

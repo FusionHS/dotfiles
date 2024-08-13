@@ -92,9 +92,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias ls='eza --long --all --no-permissions --no-filesize --no-user --no-time --git'
-alias cat='bat --paging never --theme DarkNeon --style plain'
-alias fzfp='fzf --preview \"bat --style numbers --color always {}\"'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -122,3 +119,7 @@ fi
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+alias ls='eza --long --all --no-permissions --no-filesize --no-user --no-time --git'
+alias cat='batcat --paging never --theme DarkNeon --style plain'
+alias fzfp='fzf --preview \"batcat --style numbers --color always {}\"'
