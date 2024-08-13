@@ -8,7 +8,7 @@ windows_user=$(/mnt/c/Windows/System32/cmd.exe /c 'echo %USERNAME%' | sed -e 's/
 [[ $distro_type == *Microsoft ]] && yadm config local.class wsl1
 
 sudo apt update && \
-sudo apt install zsh git zip unzip fzf -y
+sudo apt install zsh git zip unzip fzf bat jq -y
 
 sudo apt-get install --reinstall ca-certificates
 
@@ -54,6 +54,10 @@ fi
 
 if ! command -v docker >/dev/null 2>&1; then
     curl -fsSL https://get.docker.com | sh
+fi
+
+if ! command -v devbox >/dev/null 2>&1; then
+    curl -fsSL https://get.jetify.com/devbox | sh
 fi
 
 [[ $(docker version) =~ "The command 'docker' could not be found in this WSL 1 distro." ]] && curl -fsSL https://get.docker.com | sh

@@ -43,6 +43,7 @@ zi ice depth=1; zi light romkatv/powerlevel10k
 zi wait lucid for \
   zsh-users/zsh-syntax-highlighting \
   zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-history-substring-search \
   OMZP::command-not-found \
   OMZP::git \
   OMZP::sudo \
@@ -95,6 +96,7 @@ unsetopt beep
 eval `dircolors ~/.dircolors`
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(zoxide init --cmd cd zsh)"
 
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
