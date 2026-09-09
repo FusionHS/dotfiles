@@ -6,6 +6,10 @@ return {
     "windwp/nvim-ts-autotag",
   },
   config = function()
+    local parser_install_dir = vim.fn.stdpath("data") .. "/site/parser"
+    vim.fn.mkdir(parser_install_dir, "p")
+    vim.opt.runtimepath:append(parser_install_dir)
+
     -- import nvim-treesitter plugin
     local treesitter = require("nvim-treesitter.configs")
 
@@ -16,6 +20,7 @@ return {
       },
       -- enable indentation
       indent = { enable = true },
+      parser_install_dir = parser_install_dir,
       -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
         enable = true,
