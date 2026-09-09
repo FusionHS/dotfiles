@@ -1,3 +1,5 @@
 [user]
         email = fusionhs@hotmail.com
         name = Burt du Preez
+[core]
+        autocrlf = true
