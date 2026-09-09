@@ -9,6 +9,12 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
   vim.fn.system({ "git", "-C", lazypath, "checkout", "--detach", lazy_commit })
+elseif vim.fn.isdirectory(lazypath .. "/.git") == 1 then
+  local installed_commit = vim.fn.system({ "git", "-C", lazypath, "rev-parse", "HEAD" }):gsub("%s+$", "")
+  if installed_commit ~= lazy_commit then
+    vim.fn.system({ "git", "-C", lazypath, "fetch", "--quiet", "--depth=1", "origin", lazy_commit })
+    vim.fn.system({ "git", "-C", lazypath, "checkout", "--quiet", "--detach", lazy_commit })
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
