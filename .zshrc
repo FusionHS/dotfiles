@@ -23,6 +23,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Keep Oh My Zsh updates automatic and quiet. These variables are also honored
+# when the Oh My Zsh plugin is loaded through zinit.
+DISABLE_UPDATE_PROMPT=true
+UPDATE_ZSH_DAYS=13
+
 #export PATH="/usr/local/bin:/usr/bin"
 
 # autoload -Uz compinit && compinit
@@ -54,7 +59,7 @@ zi wait lucid for \
   OMZP::helm \
   OMZP::vscode \
   as"completion"  OMZP::docker \
-  lukechilds/zsh-nvm \
+  lukechilds/zsh-nvm
 
 zi for \
     atload"zicompinit; zicdreplay" \

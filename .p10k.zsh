@@ -115,6 +115,17 @@
     # example               # example user-defined segment (see prompt_example function below)
   )
 
+  # Keep prompt refreshes cheap: these are the only right-side values that are
+  # useful on every command line. Tool and version-manager segments can invoke
+  # external commands repeatedly, so enable them only when needed.
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+    status
+    command_execution_time
+    background_jobs
+    time
+    newline
+  )
+
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
   typeset -g POWERLEVEL9K_MODE=awesome-fontconfig
   # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
